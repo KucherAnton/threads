@@ -4,7 +4,8 @@ import { authMiddleware } from '@clerk/nextjs';
 // for more information about configuring your Middleware
 export default authMiddleware({
 	publicRoutes: ['/', 'api/webhook/clerk', '/register'],
-	ignoredRoutes: ['api/webhook/clerk'],
+	ignoredRoutes: ['api/webhook/clerk', '/api/uploadthing'],
+	apiRoutes: [],
 });
 
 export const config = {
@@ -15,4 +16,9 @@ export const config = {
 		// Re-include any files in the api or trpc folders that might have an extension
 		'/(api|trpc)(.*)',
 	],
+	api: {
+		bodyParser: {
+			sizeLimit: '5mb', // Set the maximum request body size to 5 MB
+		},
+	},
 };
