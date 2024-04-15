@@ -69,6 +69,7 @@ export const POST = async (request: Request) => {
 			evnt?.data ?? {};
 
 		try {
+			console.log(id);
 			// @ts-ignore
 			await createCommunity(
 				// @ts-ignore
@@ -79,7 +80,7 @@ export const POST = async (request: Request) => {
 				'org bio',
 				created_by
 			);
-
+			console.log(id, name, slug, logo_url, created_by);
 			return NextResponse.json({ message: 'User created' }, { status: 201 });
 		} catch (err) {
 			console.log(err);
